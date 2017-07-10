@@ -18,6 +18,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -117,6 +118,8 @@ public class TestDefaultFinders {
 	
 	private static  String multipleCreditCards =  "a"+ MASTERCARD2 + "," + AMEXCARD1 + " ";
 
+	private static  String freeTextWithCreditCards = String.format("It is my credit card number: %s please send me 156$. " +
+			"Also you can send it to this AE card %s. If you would like to use Visa please use:%s", MASTERCARD2, AMEXCARD1, VISACARD1);
 
 
 	@Test
@@ -225,5 +228,24 @@ public class TestDefaultFinders {
 		assertEquals (2, results.size());
 		assertTrue(results.contains(MASTERCARD2));
 		assertTrue(results.contains(AMEXCARD1));
+	}
+
+	@Test
+	public void testFreeTextWithCreditCards() {
+		FinderEngine engine = new FinderEngine();
+		List<String> results = engine.find(freeTextWithCreditCards).getMatches();
+		assertEquals (3, results.size());
+		assertTrue(results.contains(MASTERCARD2));
+		assertTrue(results.contains(AMEXCARD1));
+		assertTrue(results.contains(VISACARD1));
+	}
+
+	@Test
+	public void testSimpleEntry(){
+		FinderEngine engine = new FinderEngine();
+		for (String str: Arrays.asList(MASTERCARD1, MASTERCARD2, VISACARD1, VISACARD2)) {
+			List<String> results = engine.find(str).getMatches();
+			assertTrue(results.contains(str));
+		}
 	}
 }

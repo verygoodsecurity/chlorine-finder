@@ -32,7 +32,7 @@ public class CreditCardFinder extends RegexFinder {
 		Matcher matcher = pattern.matcher(input);
 		while (matcher.find()) {
 
-			String match = input.substring(matcher.start()+1, matcher.end()-1);
+			String match = input.substring(matcher.start(), matcher.end());
 
 			if (postMatchCheck(match)) {
 				matches.add(match);

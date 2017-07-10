@@ -31,15 +31,14 @@ public class CompositeCreditCardFinder implements Finder {
 	 */
 	public CompositeCreditCardFinder () {
 		compositeFinder = new CompositeFinder("CreditCard");
-		String START_BLOCK = "([^\\d\\.-]|^)";
-		compositeFinder.add(new CreditCardFinder("Mastercard", START_BLOCK + "5[1-5][0-9]{2}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}(\\D|$)"));
-		compositeFinder.add(new CreditCardFinder("Visa", START_BLOCK + "4[0-9]{3}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}(\\D|$)"));
-		compositeFinder.add(new CreditCardFinder("AMEX", START_BLOCK + "(34|37)[0-9]{2}(\\ |\\-|)[0-9]{6}(\\ |\\-|)[0-9]{5}(\\D|$)"));
-		compositeFinder.add(new CreditCardFinder("Diners Club 1", START_BLOCK + "30[0-5][0-9](\\ |\\-|)[0-9]{6}(\\ |\\-|)[0-9]{4}(\\D|$)"));
-		compositeFinder.add(new CreditCardFinder("Diners Club 2", START_BLOCK + "(36|38)[0-9]{2}(\\ |\\-|)[0-9]{6}(\\ |\\-|)[0-9]{4}(\\D|$)"));
-		compositeFinder.add(new CreditCardFinder("Discover", START_BLOCK + "6011(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}(\\D|$)"));
-		compositeFinder.add(new CreditCardFinder("JCB 1", START_BLOCK + "3[0-9]{3}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}(\\D|$)"));
-		compositeFinder.add(new CreditCardFinder("JCB 2", START_BLOCK + "(2131|1800)[0-9]{11}(\\D|$)"));
+		compositeFinder.add(new CreditCardFinder("Mastercard",  "5[1-5][0-9]{2}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}"));
+		compositeFinder.add(new CreditCardFinder("Visa", "4[0-9]{3}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}"));
+		compositeFinder.add(new CreditCardFinder("AMEX", "(34|37)[0-9]{2}(\\ |\\-|)[0-9]{6}(\\ |\\-|)[0-9]{5}"));
+		compositeFinder.add(new CreditCardFinder("Diners Club 1", "30[0-5][0-9](\\ |\\-|)[0-9]{6}(\\ |\\-|)[0-9]{4}"));
+		compositeFinder.add(new CreditCardFinder("Diners Club 2", "(36|38)[0-9]{2}(\\ |\\-|)[0-9]{6}(\\ |\\-|)[0-9]{4}"));
+		compositeFinder.add(new CreditCardFinder("Discover", "6011(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}"));
+		compositeFinder.add(new CreditCardFinder("JCB 1", "3[0-9]{3}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}(\\ |\\-|)[0-9]{4}"));
+		compositeFinder.add(new CreditCardFinder("JCB 2", "(2131|1800)[0-9]{11}"));
 	}
 
 	@Override
