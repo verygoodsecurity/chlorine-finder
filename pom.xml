@@ -82,5 +82,13 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
+        <extensions>
+            <extension>
+                <groupId>io.vgs.tools</groupId>
+                <artifactId>aws-maven</artifactId>
+                <version>1.4.2</version>
+            </extension>
+        </extensions>
 	</build>
 </project>
