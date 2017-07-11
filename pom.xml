@@ -71,6 +71,17 @@
 
 	</distributionManagement>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jfog</id>
+			<name>jfrog</name>
+			<url>https://dl.bintray.com/vg/vgs-misc</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<build>
 		<plugins>
 			<plugin>
