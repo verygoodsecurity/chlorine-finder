@@ -1,0 +1,19 @@
+---
+machine:
+  java:
+    version: oraclejdk8
+  environment:
+    AWS_PROFILE: vgs-dev
+dependencies:
+  override:
+    - ./env.sh
+    - mvn clean dependency:go-offline install -Dmaven.test.skip=true --fail-never --threads 5 -B
+test:
+  override:
+    - mvn test -T2C
+deployment:
+  snapshot:
+    branch: vgs-edition
+    owner: verygoodsecurity
+    commands:
+      - mvn deploy -DskipTests=true
